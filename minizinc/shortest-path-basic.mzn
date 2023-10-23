@@ -4,7 +4,6 @@ int: end;
 
 array[1..N, 1..N] of int: cost;
 
-var 1..N: roadSize;
 set of int: interval = 1..N;
 
 array[0..N] of var int: road;
