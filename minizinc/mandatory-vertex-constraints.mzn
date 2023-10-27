@@ -1,14 +1,16 @@
-int: N;
-int: M;
-int: start;
-int: end;
+int: N; %number of nodes in the graph
+int: M; %number of constraints
+int: start; %starting node
+int: end; %ending node
 
-array[1..N, 1..N] of int: cost;
-array[1..M] of set of int: v_constraint;
+array[1..N, 1..N] of int: cost; %cost matrix
+array[1..M] of set of int: v_constraint; %constraint sets
 
 set of int: interval = 1..N;
 
 array[0..N] of var int: road;
+
+%constraints
 
 constraint road[0]=start;
 constraint road[N]=end;
