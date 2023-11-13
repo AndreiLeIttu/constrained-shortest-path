@@ -8,7 +8,7 @@ array[1..M] of set of int: v_constraint; %constraint sets
 
 set of int: interval = 1..N;
 
-array[0..N] of var int: road;
+array[0..N] of var int: road; 
 
 %constraints
 
