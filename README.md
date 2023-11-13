@@ -2,10 +2,8 @@
 
 ## Current roadmap:
 
-- [x] Code basic version of shortest path between two nodes of a given graph. (no constraints)
-- [x] Code version mentioned in the general workflow - mandatory vertex constraints added to the shortest path.
+- [x] Coded basic version of shortest non-simple path between two nodes of a given graph. (no constraints)
+- [x] Coded version mentioned in the general workflow - mandatory vertex constraints added to the shortest non-simple path.
+- [x] Implemented model for simple paths using the bounded_dpath predicate.
+- [ ] Implemented a random test generator for the simple path model. 
 - [ ] Automated testing to quantify speed and efficiency of different solvers.
-
-##Current problems:
-
-1. Cannot make a custom-sized array to generate the actual shortest path. Currently, I am declaring a fixed-sized array that has the first x positions filled with the starting node to fill the whole array, only to afterwards fill the nodes on the path to the last node. 
