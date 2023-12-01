@@ -16,7 +16,6 @@ constrString = "["
 for i in range(numConstraintSets):
     constrString+="{"
     size = random.randint(1,10)
-    print(size)
     arr = np.random.randint(1,nodes,size)
     constraintSets.append(arr)
     for num in range(len(arr)-1):

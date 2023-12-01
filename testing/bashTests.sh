@@ -1,10 +1,24 @@
 #!/bin/bash
 
+echo "Hello!"
+truncate -s 0 results.txt
 
 counter=1
-while [ $counter -le 100 ]
+tries=0;
+while [ $counter -le 50 ]
 do
     python -u "./dpath_generator.py"
-    minizinc ../minizinc/bounded_dpath_implementation.mzn ./generatedTest.dzn 
-    ((counter++))
+    output=$(timeout 30 minizinc ../minizinc/bounded_dpath_implementation.mzn ./generatedTest.dzn)
+    error='ERROR'
+    unsatisfiable='UNSATISFIABLE'
+    if ! grep -qE "$error|$unsatisfiable" <<< "$output"; then
+        cat ./generatedTest.dzn >> results.txt
+        echo "\n" >> results.txt
+        echo "$output" | head -n -2 | tail -n +3 >> results.txt
+        ((counter++))
+    else 
+        echo "$output"
+    fi
+    ((tries++))
 done
+echo "$tries"
