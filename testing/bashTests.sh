@@ -4,7 +4,7 @@ echo "Hello!"
 truncate -s 0 results.txt
 
 counter=1
-tries=0;
+tries=0
 while [ $counter -le 50 ]
 do
     python -u "./dpath_generator.py"
@@ -13,7 +13,7 @@ do
     unsatisfiable='UNSATISFIABLE'
     if ! grep -qE "$error|$unsatisfiable" <<< "$output"; then
         cat ./generatedTest.dzn >> results.txt
-        echo "\n" >> results.txt
+        echo "" >> results.txt
         echo "$output" | head -n -2 | tail -n +3 >> results.txt
         ((counter++))
     else 
