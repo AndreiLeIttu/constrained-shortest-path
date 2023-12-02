@@ -17,7 +17,7 @@ array[1..E] of var bool: edges_on_path;
 
 var int: path_cost;
 
-constraint bounded_path(from, to, weights, source, target, nodes_on_path, edges_on_path, path_cost);
+constraint bounded_dpath(from, to, weights, source, target, nodes_on_path, edges_on_path, path_cost);
 
 constraint forall(constr in v_constraint) (
     exists(i in constr)(nodes_on_path[i])
