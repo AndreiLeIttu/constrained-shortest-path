@@ -1,8 +1,8 @@
 import numpy as np
 import random
 
-nodes = random.randint(1,100)
-edges = random.randint(1,min((nodes-1)*nodes/2,100))
+nodes = random.randint(2,100)
+edges = random.randint(1,100)
 source = random.randint(1,nodes)
 target = random.randint(1,nodes)
 while(target==source):

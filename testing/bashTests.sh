@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Hello!"
-truncate -s 0 results.txt
 
 counter=1
 tries=0
