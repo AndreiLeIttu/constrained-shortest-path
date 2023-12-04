@@ -7,4 +7,5 @@
 - [x] Implemented model for simple paths using the bounded_dpath predicate.
 - [X] Implemented a random test generator for the simple path model. 
 - [X] Automated testing to quantify speed and efficiency of different solvers, using Bash.
-- [ ] Measure speed across a number of tests and output results to a different file
+- [X] Measure speed across a number of tests and output results to a different file.
+- [ ] Complete report stating results of the automated testing.
