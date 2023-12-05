@@ -8,4 +8,4 @@
 - [X] Implemented a random test generator for the simple path model. 
 - [X] Automated testing to quantify speed and efficiency of different solvers, using Bash.
 - [X] Measure speed across a number of tests and output results to a different file.
-- [ ] Complete report stating results of the automated testing.
+- [X] Complete report stating results of the automated testing - [Link to report](https://github.com/AndreiLeIttu/constrained-shortest-path/blob/master/latex/automation/Automated%20testing%20analysis.pdf)
