@@ -10,4 +10,4 @@
 - [X] Measure speed across a number of tests and output results to a different file.
 - [X] Complete report stating results of the automated testing - [Link to report](https://github.com/AndreiLeIttu/constrained-shortest-path/blob/master/latex/automation/Automated%20testing%20analysis.pdf)
 - [X] Continued testing but focused on the differences between the Chuffed and Gecode solvers by running both solvers on the same inputs and the same model and storing the results.
-- [] Report about the differences between the two solvers in the case of the mandatory vertices constraint -   
+- [ ] Report about the differences between the two solvers in the case of the mandatory vertices constraint -   
