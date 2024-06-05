@@ -16,7 +16,7 @@ int main() {
     vector<pair<int,int>> time_w(nodes+1);
     vector<tuple<int,int,int>> pre[nodes+2];
     vector<int> neigh[nodes+1];
-    int deg[nodes+1]={0};
+    int deg[nodes+2]={0};
     for (int i=1;i<=edges;i++) {
         int a,b,t,cost;
         in>>a>>b>>t>>cost;
@@ -50,20 +50,21 @@ int main() {
         int x = ordering[i];
         for (int j=0;j<neigh[x].size();j++) {
             deg[neigh[x][j]]--;
-            if (!deg[neigh[x][j]])
+            if (!deg[neigh[x][j]] && neigh[x][j]!=nodes+1)
                 ordering[++cnt]=neigh[x][j];
         }
     }
     //dp
     for (int i=1;i<=nodes;i++) {
         int node = ordering[i];
+        out<<node<<" ";
         for (const auto& [prev, t, cost]: pre[node]) {
             for (int itr = time_w[prev].first;itr<=time_w[prev].second;itr++) {
                 if (ans[prev][itr-time_w[prev].first]!=1e9) {
                     int arrival = itr + t;
                     if (arrival<=time_w[node].second) {
                         ans[node][max(arrival-time_w[node].first, 0)] = min(ans[node][max(arrival-time_w[node].first, 0)], ans[prev][itr-time_w[prev].first]+cost+max(0, arrival-time_w[node].first)*node_costs[node]);
-                        out<<ans[node][max(arrival-time_w[node].first, 0)]<<" "<<node<<" "<<prev<<'\n';
+                        //out<<ans[node][max(arrival-time_w[node].first, 0)]<<" "<<node<<" "<<prev<<'\n';
                     }
                 }
             }
