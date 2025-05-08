@@ -4,6 +4,9 @@
 *.fls  
 *.log
 *.synctex.gz
+.lock
+.toml
+target/
 
 #VSCode
 .vscode/
