@@ -13,7 +13,7 @@ int main() {
     in>>nodes>>edges;
     vector<int> ordering(nodes+1);
     vector<int> node_costs(nodes+2);
-    vector<pair<int,int>> time_w(nodes+1);
+    vector<pair<int,int>> time_w(nodes+2);
     vector<tuple<int,int,int>> pre[nodes+2];
     vector<int> neigh[nodes+1];
     int deg[nodes+2]={0};
@@ -26,7 +26,7 @@ int main() {
             deg[b]++;
     }
     //time windows
-    for (int i=1;i<=nodes;i++)
+    for (int i=1;i<=nodes+1;i++)
         in>>time_w[i].first>>time_w[i].second;
     vector<int>ans[nodes+1];
     ans[0].push_back(0);
@@ -38,7 +38,6 @@ int main() {
     //node costs
     for (int i=1;i<=nodes+1;i++)
         in>>node_costs[i];
-    //maybe a bfs/dfs before to mark nodes that cannot be reached from the source
     
     //topological sort
     int cnt=0;
@@ -57,7 +56,6 @@ int main() {
     //dp
     for (int i=1;i<=nodes;i++) {
         int node = ordering[i];
-        out<<node<<" ";
         for (const auto& [prev, t, cost]: pre[node]) {
             for (int itr = time_w[prev].first;itr<=time_w[prev].second;itr++) {
                 if (ans[prev][itr-time_w[prev].first]!=1e9) {

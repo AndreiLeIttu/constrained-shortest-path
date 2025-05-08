@@ -34,8 +34,8 @@ fn main() {
     }
 
     //time windows
-    let mut time_w: Vec<(usize, usize)> = vec![(0, 0); nodes + 1];
-    for i in 1..=nodes {
+    let mut time_w: Vec<(usize, usize)> = vec![(0, 0); nodes + 2];
+    for i in 1..=nodes+1 {
         let start: usize = args[index];
         let end: usize = args[index + 1];
         time_w[i] = (start, end);
@@ -70,29 +70,29 @@ fn main() {
         }
     }
 
-    //constraining the start of the time windows
-    for i in 0..nodes {
-        let node = ordering[i];
-        let mut min_start = 1_000_000_000;
-        for &(prev, t, _) in &pre[node] {
-            min_start = min_start.min(time_w[prev].0 + t);
-        }
-        time_w[node].0 = time_w[node].0.max(min_start)
-    }
+    // //constraining the start of the time windows
+    // for i in 0..nodes {
+    //     let node = ordering[i];
+    //     let mut min_start = 1_000_000_000;
+    //     for &(prev, t, _) in &pre[node] {
+    //         min_start = min_start.min(time_w[prev].0 + t);
+    //     }
+    //     time_w[node].0 = time_w[node].0.max(min_start)
+    // }
 
-    //constraining the end of the time windows
-    for i in (0..nodes).rev() {
-        let node = ordering[i];
-        let mut max_end = 0;
-        for &(next, t) in &neigh[node] {
-            if next != nodes+1 {
-                max_end = max_end.max(time_w[next].1-t);
-            }
-        }
-        if max_end != 0 {
-            time_w[node].1 = time_w[node].1.min(max_end);
-        }
-    }
+    // //constraining the end of the time windows
+    // for i in (0..nodes).rev() {
+    //     let node = ordering[i];
+    //     let mut max_end = 0;
+    //     for &(next, t) in &neigh[node] {
+    //         if next != nodes+1 {
+    //             max_end = max_end.max(time_w[next].1-t);
+    //         }
+    //     }
+    //     if max_end != 0 {
+    //         time_w[node].1 = time_w[node].1.min(max_end);
+    //     }
+    // }
 
     // println!("{:?}", time_w);
 
@@ -124,12 +124,12 @@ fn main() {
                             let index = (arrival - time_w[node].0).max(0);
                             ans[node][index] = ans[node][index]
                                 .min(ans[prev][itr - time_w[prev].0] + cost + (arrival - time_w[node].0).max(0) * node_costs[node]);
-                            //println!("ans[{}][{}] = {}", node, prev, ans[node][index]);
+                            println!("ans[{}][{}] = {}", node, prev, ans[node][index]);
                         }
                     }  
                     else { //sink node cost computation
                         //println!("arrival: {} from {}", arrival, prev);
-                        res = res.min(ans[prev][itr - time_w[prev].0] + cost + arrival * node_costs[nodes + 1]);
+                        res = res.min(ans[prev][itr - time_w[prev].0] + cost + (arrival - time_w[node].0).max(0) * node_costs[node])
                     } 
                 }
             }
