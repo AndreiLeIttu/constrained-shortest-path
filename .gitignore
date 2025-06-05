@@ -4,6 +4,7 @@
 *.fls  
 *.log
 *.synctex.gz
+
 *.lock
 *.toml
 *.exe
@@ -16,3 +17,9 @@ target/
 A bounded path propagator on directed graphs - paper.pdf
 dpath_code.txt
 testfile.txt
+
+testing/outputs/
+testing/dzn-inputs/
+testing/rust-inputs/
+testing/cp-dense-graphs/
+testing/dp-dense-graphs/
